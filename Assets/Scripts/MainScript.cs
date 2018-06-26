@@ -9,6 +9,14 @@ public class MainScript : MonoBehaviour {
     public GameObject DetectedPlanePrefab;
     public GameObject SearchingForPlaneUI;
 
+    public GameObject monsterPrefab;
+    private Vector3 monsterRotation = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 monsterTranslation = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 monsterScale = new Vector3(1.0f, 1.0f, 1.0f);
+
+    private bool createObject = false;
+    private bool objectCreated = false;
+
     private List<DetectedPlane> m_AllPlanes = new List<DetectedPlane>();
 
     private bool m_IsQuitting = false;
@@ -30,6 +38,21 @@ public class MainScript : MonoBehaviour {
             if (m_AllPlanes[i].TrackingState == TrackingState.Tracking)
             {
                 showSearchingUI = false;
+
+                createObject = true;
+                if (!objectCreated)
+                {
+                    var anchor = m_AllPlanes[i].CreateAnchor(m_AllPlanes[i].CenterPose);
+
+                    var monsterObject = Instantiate(monsterPrefab, m_AllPlanes[i].CenterPose.position, m_AllPlanes[i].CenterPose.rotation);
+                    monsterObject.transform.Rotate(monsterRotation);
+                    monsterObject.transform.Translate(monsterTranslation);
+                    monsterObject.transform.localScale = monsterScale;
+                    monsterObject.transform.parent = anchor.transform;
+
+                    objectCreated = true;
+                }
+
                 break;
             }
         }

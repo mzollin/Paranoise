@@ -317,6 +317,8 @@ MonoBehaviour:
   DetectedPlanePrefab: {fileID: 1654175882956584, guid: 6a35c744e5010405c847fad90282d2be,
     type: 2}
   SearchingForPlaneUI: {fileID: 2094355133}
+  monsterPrefab: {fileID: 1123364597296094, guid: 4bd6319ff2e81054a9d9dbec3a9c5667,
+    type: 2}
 --- !u!4 &1242727851
 Transform:
   m_ObjectHideFlags: 0
@@ -502,7 +504,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1687314245}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
