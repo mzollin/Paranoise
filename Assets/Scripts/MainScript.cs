@@ -11,8 +11,16 @@ public class MainScript : MonoBehaviour {
 
     public GameObject monsterPrefab;
     private Vector3 monsterRotation = new Vector3(0.0f, 0.0f, 0.0f);
+    ////FIXME: lower spider partially below ground
+    //private Vector3 monsterTranslation = new Vector3(0.0f, -0.3f, 0.0f);
     private Vector3 monsterTranslation = new Vector3(0.0f, 0.0f, 0.0f);
-    private Vector3 monsterScale = new Vector3(1.0f, 1.0f, 1.0f);
+    private Vector3 monsterScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+    public GameObject floorPrefab;
+    private Vector3 floorRotation = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 floorTranslation = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 floorScale = new Vector3(1.0f, 1.0f, 1.0f);
+
 
     private bool createObject = false;
     private bool objectCreated = false;
@@ -49,6 +57,19 @@ public class MainScript : MonoBehaviour {
                     monsterObject.transform.Translate(monsterTranslation);
                     monsterObject.transform.localScale = monsterScale;
                     monsterObject.transform.parent = anchor.transform;
+
+                    //var floorObject = Instantiate(floorPrefab, m_AllPlanes[i].CenterPose.position, m_AllPlanes[i].CenterPose.rotation);
+                    //floorObject.transform.Rotate(floorRotation);
+                    //floorObject.transform.Translate(floorTranslation);
+                    //floorObject.transform.localScale = floorScale;
+                    //floorObject.transform.parent = anchor.transform;
+
+
+                    // Let the monster look at the camera but keep it on the ground (plane)
+                    Vector3 cameraDirection = new Vector3();
+                    cameraDirection = transform.InverseTransformPoint(FirstPersonCamera.transform.position) - monsterObject.transform.position;
+                    cameraDirection.y = 0;
+                    monsterObject.transform.rotation = Quaternion.LookRotation(cameraDirection, monsterObject.transform.TransformVector(Vector3.up));
 
                     objectCreated = true;
                 }

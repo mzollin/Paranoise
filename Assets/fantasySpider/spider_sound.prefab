@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 4659851615460234}
   - component: {fileID: 111845657608539152}
   - component: {fileID: 82389976466516476}
+  - component: {fileID: 114434990660098738}
   m_Layer: 0
   m_Name: spider_sound
   m_TagString: Untagged
@@ -2166,7 +2167,7 @@ Animation:
   m_GameObject: {fileID: 1123364597296094}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
+  m_Animation: {fileID: 7400010, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
   m_Animations:
   - {fileID: 7400000, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
   - {fileID: 7400002, guid: bc600cce01eb57a409f4e69025868a2c, type: 3}
@@ -2185,6 +2186,21 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 1
+--- !u!114 &114434990660098738
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123364597296094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f0ab4f7b28b57f4e9ca775b39b7fabf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 20650910099613622, guid: b3993c983ac7a5a4f8be7ccbc0f2bbca, type: 2}
+  moveSpeed: 5
+  maxDist: 4
+  minDist: 2
 --- !u!137 &137765376205601218
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
