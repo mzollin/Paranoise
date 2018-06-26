@@ -3,7 +3,7 @@ Shader "IppokratisBournellis/SectionPlane"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
-        _section ("Section plane (x angle, y angle, z angle, w displacement)", vector) = (90,0,0,1)
+        _section ("Sectionplane", vector) = (90,0,0,1)
         _Color ("Section Color", Color) = (1,1,1,0)
     }
        
