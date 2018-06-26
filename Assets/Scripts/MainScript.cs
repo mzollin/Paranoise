@@ -21,8 +21,6 @@ public class MainScript : MonoBehaviour {
     private Vector3 floorTranslation = new Vector3(0.0f, 0.0f, 0.0f);
     private Vector3 floorScale = new Vector3(1.0f, 1.0f, 1.0f);
 
-
-    private bool createObject = false;
     private bool objectCreated = false;
 
     private List<DetectedPlane> m_AllPlanes = new List<DetectedPlane>();
@@ -47,7 +45,6 @@ public class MainScript : MonoBehaviour {
             {
                 showSearchingUI = false;
 
-                createObject = true;
                 if (!objectCreated)
                 {
                     var anchor = m_AllPlanes[i].CreateAnchor(m_AllPlanes[i].CenterPose);
@@ -59,11 +56,11 @@ public class MainScript : MonoBehaviour {
                     monsterObject.transform.parent = anchor.transform;
 
 
-                    var monsterMaterial = monsterObject.GetComponent<Material>();
-                    Vector3 planeNormal = m_AllPlanes[i].CenterPose.up.normalized;
-                    Vector3 planePos = m_AllPlanes[i].CenterPose.position;
-                    Vector4 sectionplane = new Vector4(planeNormal.x, planeNormal.y, planeNormal.z, Vector3.Dot(planeNormal, planePos));
-                    monsterMaterial.SetVector("Sectionplane", sectionplane);
+                    //var monsterMaterial = monsterObject.GetComponent<Material>();
+                    //Vector3 planeNormal = m_AllPlanes[i].CenterPose.up.normalized;
+                    //Vector3 planePos = m_AllPlanes[i].CenterPose.position;
+                    //Vector4 sectionplane = new Vector4(planeNormal.x, planeNormal.y, planeNormal.z, -Vector3.Dot(planeNormal, planePos));
+                    //monsterMaterial.SetVector("Sectionplane", sectionplane);
 
                     //var floorObject = Instantiate(floorPrefab, m_AllPlanes[i].CenterPose.position, m_AllPlanes[i].CenterPose.rotation);
                     //floorObject.transform.Rotate(floorRotation);
