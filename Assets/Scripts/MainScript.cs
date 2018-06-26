@@ -16,6 +16,8 @@ public class MainScript : MonoBehaviour {
     private Vector3 monsterTranslation = new Vector3(0.0f, 0.0f, 0.0f);
     private Vector3 monsterScale = new Vector3(0.5f, 0.5f, 0.5f);
 
+    public GameObject portalPrefab;
+
     public GameObject floorPrefab;
     private Vector3 floorRotation = new Vector3(0.0f, 0.0f, 0.0f);
     private Vector3 floorTranslation = new Vector3(0.0f, 0.0f, 0.0f);
@@ -54,6 +56,9 @@ public class MainScript : MonoBehaviour {
                     monsterObject.transform.Translate(monsterTranslation);
                     monsterObject.transform.localScale = monsterScale;
                     monsterObject.transform.parent = anchor.transform;
+
+                    var portalObject = Instantiate(portalPrefab, m_AllPlanes[i].CenterPose.position, m_AllPlanes[i].CenterPose.rotation);
+                    portalObject.transform.parent = anchor.transform;
 
 
                     //var monsterMaterial = monsterObject.GetComponent<Material>();

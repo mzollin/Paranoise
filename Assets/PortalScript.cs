@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class PortalScript : MonoBehaviour {
 
-    public Camera camera =FindObjectOfType<Camera>();
+    public Camera camera = null;
 
 	// Use this for initialization
 	void Start () {
-		
+		if(camera == null)
+        {
+            camera = FindObjectOfType<Camera>();
+        }
 	}
 	
 	// Update is called once per frame
