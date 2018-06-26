@@ -59,7 +59,7 @@ public class MainScript : MonoBehaviour {
                     monsterObject.transform.parent = anchor.transform;
 
                     var monsterMaterial = monsterObject.GetComponent<Material>();
-                    Vector3 planeNormal = m_AllPlanes[i].CenterPose.up;
+                    Vector3 planeNormal = m_AllPlanes[i].CenterPose.up.normalized;
                     Vector3 planePos = m_AllPlanes[i].CenterPose.position;
                     Vector4 sectionplane = new Vector4(planeNormal.x, planeNormal.y, planeNormal.z, -Vector3.Dot(planeNormal, planePos));
                     monsterMaterial.SetVector("Sectionplane", sectionplane);
