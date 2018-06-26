@@ -1,28 +1,26 @@
-﻿Shader "Custom/StencilMask2" {
-	Properties {
-		_StencilMask("Stencil mask", Int) = 0
-	}
+﻿Shader "Custom/Clipper" {
 
+	Properties{
+	
+
+	}
+	
 	SubShader {
 		Tags {
-			"RenderType" = "Opaque"
-			"Queue" = "Geometry-100"
-		}
-
+				"RenderType"="Opaque" 
+				"Queue" = "Geometry-100"
+				}
 		ColorMask 0
-		ZWrite off
+		ZWrite on
 
-		Stencil {
-			Ref[_StencilMask]
-			Comp always
-			Pass replace
-			ZWrite off
-		}
+		Pass{
 
-		Pass {
 			CGPROGRAM
 			#pragma vertex vert
+
 			#pragma fragment frag
+
+		
 
 			struct appdata {
 				float4 vertex : POSITION;
@@ -41,7 +39,6 @@
 			half4 frag(v2f i) : COLOR {
 				return half4(1, 1, 0, 1);
 			}
-
 			ENDCG
 		}
 	}
