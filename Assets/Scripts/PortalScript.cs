@@ -6,8 +6,12 @@ public class PortalScript : MonoBehaviour {
 
     public Camera camera = null;
 
+    private float time;
+    public float lifetime = 5f;
+
 	// Use this for initialization
 	void Start () {
+        time = Time.time;
 		if(camera == null)
         {
             camera = FindObjectOfType<Camera>();
@@ -18,4 +22,14 @@ public class PortalScript : MonoBehaviour {
 	void Update () {
         GetComponent<Transform>().LookAt(camera.GetComponent<Transform>());
 	}
+
+    public void FixedUpdate()
+    {
+        if(Time.time - time > lifetime)
+        {
+            Destroy(this);
+        }
+        float scale = Mathf.Sin((Time.time - time) * 2f * Mathf.PI / lifetime);
+        GetComponent<Transform>().localScale = new Vector3(scale, scale, scale);
+    }
 }
