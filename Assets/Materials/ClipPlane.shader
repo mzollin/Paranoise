@@ -30,9 +30,9 @@ Shader "IppokratisBournellis/SectionPlane"
          
         void surf (Input IN, inout SurfaceOutput o)
         {
-        float toClip = _section.x * IN.worldPos.x +
-                        _section.y * IN.worldPos.y +
-                        _section.z * IN.worldPos.z +
+        float toClip = _section.x * 0.1 * IN.worldPos.x +
+                        _section.y * 0.1 * IN.worldPos.y +
+                        _section.z * 0.1 * IN.worldPos.z +
                         _section.w;
                            
         clip( toClip);
