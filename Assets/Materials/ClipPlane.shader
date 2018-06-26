@@ -1,45 +1,53 @@
-Shader "Custom/Stencilled" {
-	Properties {
-		_StencilMask("Stencil mask", Int) = 0
-		_Color ("Color", Color) = (1,1,1,1)
-		_MainTex ("Albedo (RGB)", 2D) = "white" {}
- 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
- 		_Metallic ("Metallic", Range(0,1)) = 0.0
-	}
-	SubShader {
-		Tags { "RenderType"="Opaque" }
-		LOD 200
-
-		CGPROGRAM
-		#pragma surface surf Standard fullforwardshadows
-		#pragma target 3.0
-
-		sampler2D _MainTex;
-
-		struct Input {
-			float2 uv_MainTex;
-		};
-
-		half _Glossiness;
-		half _Metallic;
-		fixed4 _Color;
-
-		struct v2f {
-			float4 pos : SV_POSITION;
-		};
-
-		void surf (Input IN, inout SurfaceOutputStandard o) {
-			fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
-			o.Albedo = c.rgb;
-			o.Metallic = _Metallic;
-			o.Smoothness = _Glossiness;
-			o.Alpha = c.a;
-		}
-
-		half4 frag(v2f i) : COLOR {
-				return half4(1, 1, 0, 1);
-		}
-		ENDCG
-	}
-	FallBack "Diffuse"
-}
+Shader "IppokratisBournellis/SectionPlane"
+{
+    Properties
+    {
+        _MainTex ("Texture", 2D) = "white" {}
+        _section ("Section plane (x angle, y angle, z angle, w displacement)", vector) = (90,0,0,1)
+        _Color ("Section Color", Color) = (1,1,1,0)
+    }
+       
+    SubShader
+    {
+        Tags { "RenderType" = "Opaque" }
+        Cull Off
+       
+        CGPROGRAM
+        #pragma surface surf Lambert
+     
+        struct Input
+        {
+            float2 uv_MainTex;
+            float3 worldPos;
+            float3 viewDir;
+            float3 worldNormal;
+        };
+         
+        sampler2D _MainTex;
+        sampler2D _BumpMap;
+        float4 _section;
+        fixed4 _Color;
+         
+        void surf (Input IN, inout SurfaceOutput o)
+        {
+        float toClip = _section.x * 0.1 * IN.worldPos.x +
+                        _section.y * 0.1 * IN.worldPos.y +
+                        _section.z * 0.1 * IN.worldPos.z +
+                        _section.w;
+                           
+        clip( toClip);
+             
+        float fd = dot( IN.viewDir, IN.worldNormal);
+     
+        if (fd.x > 0)
+        {
+            o.Albedo = tex2D (_MainTex, IN.uv_MainTex).rgb;
+            return;
+        }
+           
+        o.Emission = _Color;
+        }
+        ENDCG
+    }
+    Fallback "Diffuse"
+   }
