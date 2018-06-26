@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class animateSpider2 : MonoBehaviour
 {
-    public Camera Player;
+    private Camera Player;
     public float moveSpeed;
     public float minDist;
 
@@ -16,6 +16,7 @@ public class animateSpider2 : MonoBehaviour
     {
         GetComponent<Animation>().CrossFade("idle");
         start_timer = true;
+        Player = FindObjectOfType<Camera>();
     }
 
     void Update()
@@ -30,9 +31,14 @@ public class animateSpider2 : MonoBehaviour
         else
         {
             Vector3 cameraDirection = new Vector3();
-            cameraDirection = Player.GetComponent<Transform>().position - transform.position;
+            Transform t = GetComponent<Transform>();
+            cameraDirection = Player.GetComponent<Transform>().position - t.position;
             cameraDirection.y = 0;
-            transform.rotation = Quaternion.LookRotation(cameraDirection, transform.TransformVector(Vector3.up));
+            //transform.rotation = Quaternion.LookRotation(cameraDirection, transform.TransformVector(Vector3.up));
+            t.LookAt(Player.GetComponent<Transform>());
+            t.eulerAngles = new Vector3(0, t.eulerAngles.y, 0);
+
+
 
             if (Vector3.Distance(transform.position, Player.GetComponent<Transform>().position) >= minDist)
             {
