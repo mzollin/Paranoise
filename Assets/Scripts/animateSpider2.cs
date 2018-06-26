@@ -8,54 +8,74 @@ public class animateSpider2 : MonoBehaviour {
     public int maxDist = 10;
     public int minDist = 5;
 
-
-
+    private bool activeSpider;
 
     void Start()
     {
-
+        GetComponent<Animation>().CrossFade("idle");
+        activeSpider = false;
+        StartCoroutine(nop());
     }
 
     void Update()
     {
-        Vector3 cameraDirection = new Vector3();
-        cameraDirection = Player.transform.position - transform.position;
-        cameraDirection.y = 0;
-        transform.rotation = Quaternion.LookRotation(cameraDirection, transform.TransformVector(Vector3.up));
-
-        if (Vector3.Distance(transform.position, Player.transform.position) >= minDist)
+        if (activeSpider)
         {
+            Vector3 cameraDirection = new Vector3();
+            cameraDirection = Player.transform.position - transform.position;
+            cameraDirection.y = 0;
+            transform.rotation = Quaternion.LookRotation(cameraDirection, transform.TransformVector(Vector3.up));
 
-            transform.position += transform.forward * moveSpeed * Time.deltaTime;
-
-
-            GetComponent<Animation>().CrossFade("run");
-
-
-
-            if (Vector3.Distance(transform.position, Player.transform.position) <= maxDist)
+            if (Vector3.Distance(transform.position, Player.transform.position) >= minDist)
             {
-                StartCoroutine(attack());
-            }
 
+                transform.position += transform.forward * moveSpeed * Time.deltaTime;
+
+
+                GetComponent<Animation>().CrossFade("run");
+
+
+
+                if (Vector3.Distance(transform.position, Player.transform.position) <= maxDist)
+                {
+                    StartCoroutine(attack());
+                }
+
+            }
         }
     }
 
     IEnumerator attack()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 100; i++)
         {
+            if (Vector3.Distance(transform.position, Player.transform.position) > maxDist)
+            {
+                break;
+            }
+
+
+
             if (i % 2 == 0)
             {
+                Debug.Log("attack1");
                 GetComponent<Animation>().CrossFade("attack1");
-            } else
+            }
+            else
             {
+                Debug.Log("attack2");
                 GetComponent<Animation>().CrossFade("attack2");
             }
-            
+
             GetComponent<AudioSource>().Play();
             yield return new WaitForSeconds(1.5f);
 
         }
+    }
+
+    IEnumerator nop()
+    {
+        yield return new WaitForSeconds(10);
+        activeSpider = true;
     }
 }
