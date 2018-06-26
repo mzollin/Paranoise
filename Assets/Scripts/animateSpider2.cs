@@ -2,80 +2,65 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class animateSpider2 : MonoBehaviour {
+public class animateSpider2 : MonoBehaviour
+{
     public Camera Player;
-    public int moveSpeed = 4;
-    public int maxDist = 10;
-    public int minDist = 5;
+    public float moveSpeed;
+    public float minDist;
 
-    private bool activeSpider;
+    private float timer = 5.0f;
+    private bool start_timer = false;
+    private float attack_timer = 0.0f;
 
     void Start()
     {
         GetComponent<Animation>().CrossFade("idle");
-        activeSpider = false;
-        StartCoroutine(nop());
+        start_timer = true;
     }
 
     void Update()
     {
-        if (activeSpider)
+        if (timer >= 0.0f)
+        {
+            if (start_timer)
+            {
+                timer -= Time.deltaTime;
+            }
+        }
+        else
         {
             Vector3 cameraDirection = new Vector3();
-            cameraDirection = Player.transform.position - transform.position;
+            cameraDirection = Player.GetComponent<Transform>().position - transform.position;
             cameraDirection.y = 0;
             transform.rotation = Quaternion.LookRotation(cameraDirection, transform.TransformVector(Vector3.up));
 
-            if (Vector3.Distance(transform.position, Player.transform.position) >= minDist)
+            if (Vector3.Distance(transform.position, Player.GetComponent<Transform>().position) >= minDist)
             {
-
+                // run
                 transform.position += transform.forward * moveSpeed * Time.deltaTime;
-
-
                 GetComponent<Animation>().CrossFade("run");
-
-
-
-                if (Vector3.Distance(transform.position, Player.transform.position) <= maxDist)
-                {
-                    StartCoroutine(attack());
-                }
-
-            }
-        }
-    }
-
-    IEnumerator attack()
-    {
-        for (int i = 0; i < 100; i++)
-        {
-            if (Vector3.Distance(transform.position, Player.transform.position) > maxDist)
-            {
-                break;
-            }
-
-
-
-            if (i % 2 == 0)
-            {
-                Debug.Log("attack1");
-                GetComponent<Animation>().CrossFade("attack1");
+                attack_timer = 0.0f;
             }
             else
             {
-                Debug.Log("attack2");
-                GetComponent<Animation>().CrossFade("attack2");
+                attack();
             }
-
-            GetComponent<AudioSource>().Play();
-            yield return new WaitForSeconds(1.5f);
-
         }
     }
 
-    IEnumerator nop()
+    void attack()
     {
-        yield return new WaitForSeconds(10);
-        activeSpider = true;
+        if (attack_timer >= 0)
+        {
+            attack_timer -= Time.deltaTime;
+        }
+        else
+        {
+            Debug.Log("attack1");
+            GetComponent<Animation>().CrossFade("attack1");
+            GetComponent<AudioSource>().Play();
+            attack_timer = 1.5f;
+        }
+
     }
 }
