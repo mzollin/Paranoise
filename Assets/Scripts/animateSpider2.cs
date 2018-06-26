@@ -39,8 +39,15 @@ public class animateSpider2 : MonoBehaviour
             t.eulerAngles = new Vector3(0, t.eulerAngles.y, 0);
 
 
+            Vector3 monster_position = new Vector3();
+            Vector3 player_position = new Vector3();
+            monster_position = transform.position;
+            player_position = Player.GetComponent<Transform>().position;
+            monster_position.y = 0;
+            player_position.y = 0;
 
-            if (Vector3.Distance(transform.position, Player.GetComponent<Transform>().position) >= minDist)
+            //if (Vector3.Distance(transform.position, Player.GetComponent<Transform>().position) >= minDist)
+            if (Vector3.Distance(monster_position, player_position) >= minDist)
             {
                 // run
                 transform.position += transform.forward * moveSpeed * Time.deltaTime;

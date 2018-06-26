@@ -2197,9 +2197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0ab4f7b28b57f4e9ca775b39b7fabf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 20650910099613622, guid: b3993c983ac7a5a4f8be7ccbc0f2bbca, type: 2}
-  moveSpeed: 0.2
-  minDist: 1.5
+  moveSpeed: 0.5
+  minDist: 0.5
 --- !u!137 &137765376205601218
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
