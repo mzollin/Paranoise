@@ -321,6 +321,8 @@ MonoBehaviour:
     type: 2}
   portalPrefab: {fileID: 1549399497726816, guid: db06e6b203236504bb4c681425cc31ed,
     type: 2}
+  bugnoise: {fileID: 82686131222009084, guid: c53b6d6a504903842a682d1274a6c20f, type: 2}
+  bugclip: {fileID: 8300000, guid: b4ca13f35fca6f64b8366374a2314847, type: 3}
   floorPrefab: {fileID: 1560689424758216, guid: 7ac3c98a62ecb1644ab0324b72cbdcde,
     type: 2}
 --- !u!4 &1242727851

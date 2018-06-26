@@ -18,6 +18,9 @@ public class MainScript : MonoBehaviour {
 
     public GameObject portalPrefab;
 
+    public AudioSource bugnoise;
+    public AudioClip bugclip;
+
     public GameObject floorPrefab;
     private Vector3 floorRotation = new Vector3(0.0f, 0.0f, 0.0f);
     private Vector3 floorTranslation = new Vector3(0.0f, 0.0f, 0.0f);
@@ -28,6 +31,8 @@ public class MainScript : MonoBehaviour {
     private List<DetectedPlane> m_AllPlanes = new List<DetectedPlane>();
 
     private bool m_IsQuitting = false;
+
+    private float bugNoiseTimer = 5.0f;
 
     // Use this for initialization
     void Start () {
@@ -49,6 +54,8 @@ public class MainScript : MonoBehaviour {
 
                 if (!objectCreated)
                 {
+                    objectCreated = true;
+
                     var anchor = m_AllPlanes[i].CreateAnchor(m_AllPlanes[i].CenterPose);
 
                     var monsterObject = Instantiate(monsterPrefab, m_AllPlanes[i].CenterPose.position, m_AllPlanes[i].CenterPose.rotation);
@@ -58,7 +65,7 @@ public class MainScript : MonoBehaviour {
                     monsterObject.transform.parent = anchor.transform;
 
                     var portalObject = Instantiate(portalPrefab, m_AllPlanes[i].CenterPose.position, m_AllPlanes[i].CenterPose.rotation);
-                    portalObject.transform.parent = anchor.transform; 
+                    portalObject.transform.parent = anchor.transform;
 
 
                     //var monsterMaterial = monsterObject.GetComponent<Material>();
@@ -79,12 +86,22 @@ public class MainScript : MonoBehaviour {
                     cameraDirection = transform.InverseTransformPoint(FirstPersonCamera.transform.position) - monsterObject.transform.position;
                     cameraDirection.y = 0;
                     monsterObject.transform.rotation = Quaternion.LookRotation(cameraDirection, monsterObject.transform.TransformVector(Vector3.up));
-
-                    objectCreated = true;
                 }
 
                 break;
             }
+        }
+
+        // make creepy bug noises at random places
+        if (bugNoiseTimer >= 0)
+        {
+            bugNoiseTimer -= Time.deltaTime;
+        }
+        else
+        {
+            Vector3 position = new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f));
+            AudioSource.PlayClipAtPoint(bugclip, position);
+            bugNoiseTimer = Random.Range(0.0f, 10.0f);
         }
 
         SearchingForPlaneUI.SetActive(showSearchingUI);

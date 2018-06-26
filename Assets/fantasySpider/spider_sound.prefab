@@ -2198,7 +2198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 0.5
-  minDist: 0.5
+  minDist: 0.25
 --- !u!137 &137765376205601218
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
