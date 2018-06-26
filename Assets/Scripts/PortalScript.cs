@@ -18,20 +18,4 @@ public class PortalScript : MonoBehaviour {
 	void Update () {
         GetComponent<Transform>().LookAt(camera.GetComponent<Transform>());
 	}
-
-    private float last_attack = 0f;
-
-    private void FixedUpdate()
-    {
-        if(last_attack + 1.5f < Time.time)
-        {
-            last_attack = Time.time;
-            attack();
-        }
-    }
-
-    private void attack()
-    {
-        //attack
-    }
 }

@@ -319,6 +319,8 @@ MonoBehaviour:
   SearchingForPlaneUI: {fileID: 2094355133}
   monsterPrefab: {fileID: 1123364597296094, guid: 4bd6319ff2e81054a9d9dbec3a9c5667,
     type: 2}
+  portalPrefab: {fileID: 1549399497726816, guid: db06e6b203236504bb4c681425cc31ed,
+    type: 2}
   floorPrefab: {fileID: 1560689424758216, guid: 7ac3c98a62ecb1644ab0324b72cbdcde,
     type: 2}
 --- !u!4 &1242727851

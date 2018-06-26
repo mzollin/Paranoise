@@ -2089,10 +2089,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1d3ce892e27384bd2b9edfe2dfec5789, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2198,8 +2198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 20650910099613622, guid: b3993c983ac7a5a4f8be7ccbc0f2bbca, type: 2}
-  moveSpeed: 5
-  maxDist: 4
+  moveSpeed: 0.2
   minDist: 2
 --- !u!137 &137765376205601218
 SkinnedMeshRenderer:
