@@ -58,7 +58,7 @@ public class MainScript : MonoBehaviour {
                     monsterObject.transform.parent = anchor.transform;
 
                     var portalObject = Instantiate(portalPrefab, m_AllPlanes[i].CenterPose.position, m_AllPlanes[i].CenterPose.rotation);
-                    portalObject.transform.parent = anchor.transform;
+                    portalObject.transform.parent = anchor.transform; 
 
 
                     //var monsterMaterial = monsterObject.GetComponent<Material>();
