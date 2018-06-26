@@ -14,7 +14,7 @@
 		ZWrite on
 
 		Pass{
-
+		/*
 			CGPROGRAM
 			#pragma vertex vert
 
@@ -40,6 +40,7 @@
 				return half4(1, 1, 0, 1);
 			}
 			ENDCG
+		*/
 		}
 	}
 }
