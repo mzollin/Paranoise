@@ -59,8 +59,9 @@ public class MainScript : MonoBehaviour {
                     monsterObject.transform.parent = anchor.transform;
 
                     var monsterMaterial = monsterObject.GetComponent<Material>();
-                    Quaternion planeRot = m_AllPlanes[i].CenterPose.rotation;
-                    Vector4 sectionplane = new Vector4(planeRot.x, planeRot.y, planeRot.z, planeRot.w);
+                    Vector3 planeNormal = m_AllPlanes[i].CenterPose.up;
+                    Vector3 planePos = m_AllPlanes[i].CenterPose.position;
+                    Vector4 sectionplane = new Vector4(planeNormal.x, planeNormal.y, planeNormal.z, -Vector3.Dot(planeNormal, planePos));
                     monsterMaterial.SetVector("Sectionplane", sectionplane);
 
                     //var floorObject = Instantiate(floorPrefab, m_AllPlanes[i].CenterPose.position, m_AllPlanes[i].CenterPose.rotation);
