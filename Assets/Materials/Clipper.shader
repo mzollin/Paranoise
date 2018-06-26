@@ -8,7 +8,7 @@
 	SubShader {
 		Tags {
 				"RenderType"="Opaque" 
-				"Queue" = "Geometry-100"
+				"Queue" = "Transparent+100"   
 				}
 		ColorMask 0
 		ZWrite on
