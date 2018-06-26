@@ -29,7 +29,7 @@ public class PortalScript : MonoBehaviour {
         {
             Destroy(this);
         }
-        float scale = Mathf.Sin((Time.time - time) * 2f * Mathf.PI / lifetime);
+        float scale = Mathf.Sin((Time.time - time) * Mathf.PI / lifetime);
         GetComponent<Transform>().localScale = new Vector3(scale, scale, scale);
     }
 }
