@@ -26,6 +26,8 @@ public class MainScript : MonoBehaviour {
     private Vector3 floorTranslation = new Vector3(0.0f, 0.0f, 0.0f);
     private Vector3 floorScale = new Vector3(1.0f, 1.0f, 1.0f);
 
+    public HealthScript health;
+
     private bool objectCreated = false;
 
     private List<DetectedPlane> m_AllPlanes = new List<DetectedPlane>();
