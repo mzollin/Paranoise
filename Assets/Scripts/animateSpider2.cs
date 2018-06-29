@@ -53,7 +53,7 @@ public class animateSpider2 : MonoBehaviour
             if (Vector3.Distance(monster_position, player_position) >= minDist)
             {
                 // run
-                transform.position += transform.forward * moveSpeed * Time.deltaTime * (1f + Time.time/30f);
+                transform.position += transform.forward * moveSpeed * Time.deltaTime * (1f + Time.time/20f);
                 GetComponent<Animation>().CrossFade("run");
                 attack_timer = 0.5f;
             }
