@@ -7,7 +7,7 @@ public class PortalScript : MonoBehaviour {
     public Camera camera = null;
 
     private float time;
-    public float lifetime = 5f;
+    public float lifetime = 2f;
 
 	// Use this for initialization
 	void Start () {

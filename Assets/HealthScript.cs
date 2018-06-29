@@ -7,7 +7,7 @@ public class HealthScript : MonoBehaviour {
 
     public Slider healthSlider;
     public Image hurtTint;
-    public Text gameOver;
+    public GameObject gameOver;
     public int currentHealth;
     public int maxHealth;
     public bool damageTaken;
@@ -20,7 +20,8 @@ public class HealthScript : MonoBehaviour {
         currentHealth = maxHealth;
         healthSlider.value = currentHealth;
         //gameOver.color = Color.clear;
-        gameOver.enabled = false;
+        //gameOver.enabled = false;
+        gameOver.SetActive(false);
     }
 	
 	// Update is called once per frame
@@ -48,7 +49,8 @@ public class HealthScript : MonoBehaviour {
             currentHealth = 0;
             hurtTint.color = death;
             //gameOver.color = Color.black;
-            gameOver.enabled = true;
+            //gameOver.enabled = true;
+            gameOver.SetActive(true);
         }
         else if (currentHealth > maxHealth)
         {
