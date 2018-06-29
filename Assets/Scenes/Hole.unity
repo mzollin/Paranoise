@@ -158,7 +158,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1520916694943248, guid: f30bb9d5a90d205458e71c7cd1247b02, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f30bb9d5a90d205458e71c7cd1247b02, type: 2}
@@ -723,6 +723,10 @@ Prefab:
     - target: {fileID: 1549399497726816, guid: db06e6b203236504bb4c681425cc31ed, type: 2}
       propertyPath: m_Name
       value: BlackPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 1549399497726816, guid: db06e6b203236504bb4c681425cc31ed, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db06e6b203236504bb4c681425cc31ed, type: 2}

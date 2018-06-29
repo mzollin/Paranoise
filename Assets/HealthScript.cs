@@ -50,6 +50,7 @@ public class HealthScript : MonoBehaviour {
             hurtTint.color = death;
             //gameOver.color = Color.black;
             //gameOver.enabled = true;
+            gameOver.GetComponentInChildren<Text>().text = Mathf.Round(Time.time * 100f)/100f + "s";
             gameOver.SetActive(true);
         }
         else if (currentHealth > maxHealth)
