@@ -458,7 +458,7 @@ MonoBehaviour:
   healthSlider: {fileID: 1827430857}
   hurtTint: {fileID: 898085373}
   gameOver: {fileID: 1464775588}
-  currentHealth: 10
+  currentHealth: 100
   maxHealth: 100
   damageTaken: 0
 --- !u!1 &1464775588
