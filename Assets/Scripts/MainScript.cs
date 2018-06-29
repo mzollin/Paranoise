@@ -27,6 +27,7 @@ public class MainScript : MonoBehaviour {
     private Vector3 floorScale = new Vector3(1.0f, 1.0f, 1.0f);
 
     public HealthScript health;
+    public Timer timer;
 
     private bool objectCreated = false;
 
@@ -71,7 +72,7 @@ public class MainScript : MonoBehaviour {
                     var portalObject = Instantiate(portalPrefab, m_AllPlanes[i].CenterPose.position, m_AllPlanes[i].CenterPose.rotation);
                     portalObject.transform.parent = anchor.transform;
 
-
+                    timer.StartTimer();
                     //var monsterMaterial = monsterObject.GetComponent<Material>();
                     //Vector3 planeNormal = m_AllPlanes[i].CenterPose.up.normalized;
                     //Vector3 planePos = m_AllPlanes[i].CenterPose.position;

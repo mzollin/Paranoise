@@ -23,7 +23,6 @@ public class HealthScript : MonoBehaviour {
         //gameOver.color = Color.clear;
         //gameOver.enabled = false;
         gameOver.SetActive(false);
-        timer.GetComponent<Timer>().StartTimer();
     }
 	
 	// Update is called once per frame
