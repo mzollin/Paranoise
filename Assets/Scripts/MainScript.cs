@@ -36,6 +36,8 @@ public class MainScript : MonoBehaviour {
 
     private float bugNoiseTimer = 5.0f;
 
+    private GameObject monsterObject;
+
     // Use this for initialization
     void Start () {
 		
@@ -60,7 +62,7 @@ public class MainScript : MonoBehaviour {
 
                     var anchor = m_AllPlanes[i].CreateAnchor(m_AllPlanes[i].CenterPose);
 
-                    var monsterObject = Instantiate(monsterPrefab, m_AllPlanes[i].CenterPose.position, m_AllPlanes[i].CenterPose.rotation);
+                    monsterObject = Instantiate(monsterPrefab, m_AllPlanes[i].CenterPose.position, m_AllPlanes[i].CenterPose.rotation);
                     monsterObject.transform.Rotate(monsterRotation);
                     monsterObject.transform.Translate(monsterTranslation);
                     monsterObject.transform.localScale = monsterScale;
@@ -94,16 +96,25 @@ public class MainScript : MonoBehaviour {
             }
         }
 
-        // make creepy bug noises at random places
-        if (bugNoiseTimer >= 0)
+
+        if (health.currentHealth <= 0)
         {
-            bugNoiseTimer -= Time.deltaTime;
+            Destroy(monsterObject);
+
         }
         else
         {
-            Vector3 position = new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f));
-            AudioSource.PlayClipAtPoint(bugclip, position);
-            bugNoiseTimer = Random.Range(0.0f, 10.0f);
+            // make creepy bug noises at random places
+            if (bugNoiseTimer >= 0)
+            {
+                bugNoiseTimer -= Time.deltaTime;
+            }
+            else
+            {
+                Vector3 position = new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f));
+                AudioSource.PlayClipAtPoint(bugclip, position);
+                bugNoiseTimer = Random.Range(0.0f, 10.0f);
+            }
         }
 
         SearchingForPlaneUI.SetActive(showSearchingUI);
