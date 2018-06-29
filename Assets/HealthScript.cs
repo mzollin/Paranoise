@@ -36,11 +36,16 @@ public class HealthScript : MonoBehaviour {
     public void ApplyDamage(int damage)
     {
         currentHealth -= damage;
-        healthSlider.value = currentHealth;
         damageTaken = true;
-        if(currentHealth < 0)
+        if(currentHealth <= 0)
         {
+            currentHealth = 0;
             hurtTint.color = death;
         }
+        else if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthSlider.value = currentHealth;
     }
 }
