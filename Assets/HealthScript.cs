@@ -24,14 +24,17 @@ public class HealthScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (damageTaken)
+        if (currentHealth > 0)
         {
-            hurtTint.color = red;
-            damageTaken = false;
-        }
-        else
-        {
-            hurtTint.color = Color.Lerp(hurtTint.color, Color.clear, 5 * Time.deltaTime);
+            if (damageTaken)
+            {
+                hurtTint.color = red;
+                damageTaken = false;
+            }
+            else
+            {
+                hurtTint.color = Color.Lerp(hurtTint.color, Color.clear, 5 * Time.deltaTime);
+            }
         }
 	}
 
