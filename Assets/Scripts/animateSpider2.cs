@@ -8,6 +8,8 @@ public class animateSpider2 : MonoBehaviour
     public float moveSpeed;
     public float minDist;
 
+    public HealthScript health;
+
     private float timer = 5.0f;
     private bool start_timer = false;
     private float attack_timer = 0.0f;
@@ -17,6 +19,7 @@ public class animateSpider2 : MonoBehaviour
         GetComponent<Animation>().CrossFade("idle");
         start_timer = true;
         Player = FindObjectOfType<Camera>();
+        health = FindObjectOfType<HealthScript>();
     }
 
     void Update()
@@ -73,6 +76,7 @@ public class animateSpider2 : MonoBehaviour
             GetComponent<Animation>().CrossFade("attack1");
             GetComponent<AudioSource>().Play();
             attack_timer = 1.5f;
+            health.ApplyDamage(11);
         }
 
     }
