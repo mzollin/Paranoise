@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 329768924}
   - component: {fileID: 329768926}
   - component: {fileID: 329768925}
+  - component: {fileID: 329768927}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -350,6 +351,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 329768923}
+--- !u!114 &329768927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 329768923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67e5291c4ef6142499e1a3c02d818723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starttime: 0
+  endtime: 0
 --- !u!1 &898085371
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,7 +546,7 @@ MonoBehaviour:
   healthSlider: {fileID: 1827430857}
   hurtTint: {fileID: 898085373}
   gameOver: {fileID: 1464775588}
-  timer: {fileID: 329768925}
+  timer: {fileID: 329768923}
   currentHealth: 100
   maxHealth: 100
   damageTaken: 0
