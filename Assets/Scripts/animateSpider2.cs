@@ -55,7 +55,7 @@ public class animateSpider2 : MonoBehaviour
                 // run
                 transform.position += transform.forward * moveSpeed * Time.deltaTime;
                 GetComponent<Animation>().CrossFade("run");
-                attack_timer = 0.0f;
+                attack_timer = 0.5f;
             }
             else
             {

@@ -111,8 +111,9 @@ public class MainScript : MonoBehaviour {
             }
             else
             {
+                Vector3 playerPosition = FirstPersonCamera.GetComponent<Transform>().position;
                 Vector3 position = new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f), Random.Range(-5.0f, 5.0f));
-                AudioSource.PlayClipAtPoint(bugclip, position);
+                AudioSource.PlayClipAtPoint(bugclip, playerPosition + position);
                 bugNoiseTimer = Random.Range(0.0f, 10.0f);
             }
         }
