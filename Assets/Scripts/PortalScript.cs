@@ -27,7 +27,8 @@ public class PortalScript : MonoBehaviour {
     {
         if(Time.time - time > lifetime)
         {
-            Destroy(this);
+
+            Destroy(gameObject);
         }
         float scale = Mathf.Sin((Time.time - time) * Mathf.PI / lifetime);
         GetComponent<Transform>().localScale = new Vector3(scale, scale, scale);
